@@ -1,6 +1,7 @@
 package com.loads.loads.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ public class MyController {
 
 	@Autowired
 	private LoadServices Loadservice;
+
+
 	//To check Api is working or not
 	@GetMapping("/home")
 	public String home() {
@@ -35,10 +38,11 @@ public class MyController {
 	}
 
 	//get load by id
-
+	
 	@GetMapping("/load/{sellerId}")
-	public Load getLoad(@PathVariable String sellerId)
+	public Optional<Load> getLoad(@PathVariable String sellerId)
 	{
+		// System.out.println("hello" + sellerId);
 		return this.Loadservice.getLoad(Long.parseLong(sellerId));
 	}
 
@@ -50,7 +54,7 @@ public class MyController {
 
 	}
 
-	//update payload using id
+	//update payload 
 	@PutMapping("/load")
 	public Load updateLoad(@RequestBody Load load)
 	{

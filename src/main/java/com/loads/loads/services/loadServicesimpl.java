@@ -1,8 +1,7 @@
 package com.loads.loads.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +45,7 @@ public class loadServicesimpl implements LoadServices {
 
 
 	@Override
-	public Load getLoad(long sellerId) {
+	public Optional<Load> getLoad(long sellerId) {
 		// Load s = null;
 
 		// for(Load load:list)
@@ -58,7 +57,7 @@ public class loadServicesimpl implements LoadServices {
 		// 	}
 		// }
 
-		return loadDao.getOne(sellerId);
+		return loadDao.findById(sellerId);
 	}
 
 
@@ -92,6 +91,7 @@ public class loadServicesimpl implements LoadServices {
 		// 	}
 		// });
 		loadDao.save(load);
+
 		return load;
 	}
 
