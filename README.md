@@ -23,8 +23,11 @@ Update the application.properties file with your database credentials:
 bash
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/your_data
+
 spring.datasource.username=your_user
+
 spring.datasource.password=12345
+
 Run the application:
 
 bash
